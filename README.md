@@ -1,6 +1,8 @@
 # AI Portfolio Review
 
-Este proyecto es una aplicación web que permite a los usuarios ingresar el dominio de su portafolio y recibir una revisión detallada generada por la API de OpenAI. 
+Este proyecto es una aplicación web que permite a los usuarios ingresar el dominio de su portafolio y recibir una revisión detallada generada por la API de OpenAI.
+
+![image](https://github.com/user-attachments/assets/67258679-8d56-4ed1-8b1a-63ed7869f433)
 
 ## Estructura del Proyecto
 
@@ -15,11 +17,16 @@ Este proyecto es una aplicación web que permite a los usuarios ingresar el domi
 1. **Solicitud de Revisión**:
    - El usuario ingresa el dominio de su portafolio en el formulario de la página principal (`index.html`).
    - Al enviar el formulario, se realiza una solicitud POST a la vista `submit_url` en `views.py`.
+  
+![image](https://github.com/user-attachments/assets/f54d3b58-926f-4169-b7d5-e0c68224ed6f)
 
 2. **Procesamiento de la Solicitud**:
    - En `views.py`, la función `submit_url` recibe la solicitud y extrae el dominio del portafolio.
    - Se toma una captura de pantalla del sitio web utilizando `Playwright` y se sube a un bucket de `S3 de AWS`.
    - La URL de la imagen subida se utiliza para solicitar una revisión detallada a la API de OpenAI.
+  
+![image](https://github.com/user-attachments/assets/57b86361-1ab3-41f4-b2df-7c8064510742)
+
 
 3. **Generación de la Revisión**:
    - La función `get_openai_review` en `views.py` envía una solicitud a la API de OpenAI con la URL de la imagen.
