@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="csrf-token" content="{{ csrf_token }}" />
+  <title>AI Portfolio Review</title>
+    
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .loader {
+      display: none;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #4f46e5;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 2s linear infinite;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+  <header class="flex justify-between items-center py-4 px-6 bg-white shadow-md">
+    <h1 class="text-xl font-bold">AI Portfolio Review</h1>
+  </header>
+
+  <main class="container mx-auto py-12 px-6">
+    <!-- Form Input -->
+    <section class="space-y-4">
+      <h2 class="text-xl font-bold">Enter your portfolio domain:</h2>
+      <form id="reviewForm" method="POST">
+        {% csrf_token %}
+        <div class="flex rounded-md shadow-sm overflow-hidden">
+          <input name="domain" type="text" id="domainInput" class="flex-grow px-4 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:ring-1" placeholder="e.g. example.com" />
+          <button type="submit" class="px-4 py-2 text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Review</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Loader -->
+    <div id="loader" class="loader"></div>
+
+    <!-- Review Result -->
+    <div id="reviewResult" class="hidden mt-6"></div>
+  </main>
+
+  <!-- JavaScript externo -->
+  <script src="{% static 'main.js' %}"></script>
+</body>
+</html>
