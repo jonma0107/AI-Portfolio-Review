@@ -78,4 +78,6 @@ CSRF (Cross-Site Request Forgery) es un tipo de ataque que permite a un atacante
 Este proyecto utiliza variables de entorno definidas en un archivo `.env` para mantener segura la configuración sensible como la `SECRET_KEY` y la variable `DEBUG`.
 
 
-Este README proporciona una visión general del flujo del backend, las herramientas utilizadas y las consideraciones de seguridad en el proyecto.
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. 
